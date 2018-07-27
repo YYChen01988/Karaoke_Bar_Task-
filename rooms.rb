@@ -9,7 +9,7 @@ def initialize(room_name,room_price, room_size)
   @room_size = room_size
   #maximum number of people to use this room
   @guest_list = []
-  @song_list = []
+  @playlist = []
 end
 
   def add_guest(guest)
@@ -29,11 +29,11 @@ end
   end
 
   def add_song(song)
-    @song_list << song
+    @playlist << song
   end
 
   def song_count()
-    @song_list.count()
+    @playlist.count()
   end
 
 
@@ -42,6 +42,18 @@ end
       return "Sorry, we are fully booked!"
     end
   end
+
+  def match_favourite_song()
+    for song in @playlist
+      for guest in @guest_list
+        if song.song_name() == guest.favourite_song()
+          return "Thats my jam!"
+        end
+      end
+    end
+  end
+
+
 
 
 

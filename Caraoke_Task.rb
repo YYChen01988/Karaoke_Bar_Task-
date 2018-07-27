@@ -15,5 +15,7 @@ Karaoke venues usually have an entry fee - so, the guests could have money so th
 
 Advanced extensions
 Guests could have a favourite song, and if their favourite song is on the room's playlist, they can cheer loudly! You could return a string like "Whoo!".
+
 Rooms can keep track of the entry fees/spending of the guests - maybe add a bar tab/bar class?
+
 Add anything extra you think would be good to have at a karaoke venue!

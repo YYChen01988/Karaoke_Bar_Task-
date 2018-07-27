@@ -11,10 +11,10 @@ class RoomsTest < MiniTest::Test
     @stander_room1 = Rooms.new("stander_room1", 120, 5)
     @luxury_room1 = Rooms.new("luxury_room1", 1000, 10)
 
-    @Julie = Guests.new("Julie", 80)
-    @Tom = Guests.new("Tom", 60)
-    @Wendy = Guests.new("Wendy", 30)
-    @Ray = Guests.new("Ray", 90)
+    @Julie = Guests.new("Julie", 80, "Hello")
+    @Tom = Guests.new("Tom", 60, "Billy_Jean")
+    @Wendy = Guests.new("Wendy", 30, "Photograph")
+    @Ray = Guests.new("Ray", 90, "No milk today")
     # @Sally = Guest.new("Sally", 100)
 
 
@@ -43,20 +43,20 @@ class RoomsTest < MiniTest::Test
   end
 
   def test_add_guest_to_guest_list()
-    new_guest = Guests.new("Ken", 60)
+    new_guest = Guests.new("Ken", 60, "Blackbird")
     @stander_room1.add_guest(new_guest)
     assert_equal(5, @stander_room1.guest_count())
   end
 
   def test_check_in()
-    new_guest = Guests.new("Ken", 60)
+    new_guest = Guests.new("Ken", 60, "Blackbird")
     @stander_room1.add_guest(new_guest)
     result = @stander_room1.check_in(@Julie)
     assert_equal(true, result)
   end
 
   def test_check_out()
-    @Ken = Guests.new("Ken", 60)
+    @Ken = Guests.new("Ken", 60, "Blackbird")
     @stander_room1.add_guest(@Ken)
     result = @stander_room1.check_out(@Ken)
     assert_equal(4, @stander_room1.guest_count())
@@ -69,12 +69,19 @@ class RoomsTest < MiniTest::Test
   end
 
   def test_reject_guest()
-    @Ken = Guests.new("Ken", 60)
+    @Ken = Guests.new("Ken", 60, "Blackbird")
     @stander_room1.add_guest(@Ken)
     result = @stander_room1.reject_guest()
     expected = "Sorry, we are fully booked!"
     assert_equal(expected, result)
   end
+
+  def test_match_favourite_song()
+    result = @stander_room1.match_favourite_song()
+    expected = "Thats my jam!"
+    assert_equal(expected, result)
+  end
+
 
 
 
