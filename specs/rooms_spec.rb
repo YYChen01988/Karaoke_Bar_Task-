@@ -13,7 +13,7 @@ class RoomsTest < MiniTest::Test
 
     @Julie = Guests.new("Julie", 80, "Hello")
     @Tom = Guests.new("Tom", 60, "Billy_Jean")
-    @Wendy = Guests.new("Wendy", 30, "Photograph")
+    @Wendy = Guests.new("Wendy", 100, "Photograph")
     @Ray = Guests.new("Ray", 90, "No milk today")
     # @Sally = Guest.new("Sally", 100)
 
@@ -78,11 +78,15 @@ class RoomsTest < MiniTest::Test
 
   def test_match_favourite_song()
     result = @stander_room1.match_favourite_song()
-    expected = "Thats my jam!"
+    expected = "whoop whoop!"
     assert_equal(expected, result)
   end
 
-
+  def test_fee_charge()
+    result = @stander_room1.fee_charge()
+    expected = [50,30,70,60]
+    assert_equal(expected, result)
+  end
 
 
 

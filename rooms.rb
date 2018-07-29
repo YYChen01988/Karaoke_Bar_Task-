@@ -1,6 +1,6 @@
 class Rooms
 
-attr_reader :room_name, :room_price, :room_size
+attr_reader :room_name, :room_price, :room_size, :guest_list
 
 def initialize(room_name,room_price, room_size)
   @room_name = room_name
@@ -47,14 +47,22 @@ end
     for song in @playlist
       for guest in @guest_list
         if song.song_name() == guest.favourite_song()
-          return "Thats my jam!"
+          return "whoop whoop!"
         end
       end
     end
   end
 
 
-
+  def fee_charge()
+    result = []
+    price_per_person = @room_price/@guest_list.count()
+    for guest in @guest_list
+      guest.add_to_wallet(-price_per_person)
+      result << guest.wallet()
+    end
+    return result
+  end
 
 
 end
